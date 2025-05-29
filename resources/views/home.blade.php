@@ -5,6 +5,76 @@
         <link rel="preconnect" href="https://fonts.bunny.net">        <link href="https://fonts.bunny.net/css?family=montserrat:400,500,600,700&display=swap" rel="stylesheet" />
         <!-- Styles / Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- Add this in the head section of your document -->
+        <script>
+            // Weather API functionality
+            document.addEventListener('DOMContentLoaded', function() {
+                // OpenWeatherMap API key - replace with your actual API key
+                const apiKey = 'c3350498e2eed1f3fbb8c30f9c704a30';
+                
+                // Function to fetch weather data
+                function fetchWeather(city, elementId) {
+                    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+                    
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.cod === 200) {
+                                const weatherElement = document.getElementById(elementId);
+                                if (weatherElement) {
+                                    const temp = Math.round(data.main.temp);
+                                    const description = data.weather[0].description;
+                                    const icon = data.weather[0].icon;
+                                    const humidity = data.main.humidity;
+                                    const windSpeed = data.wind.speed;
+                                    
+                                    weatherElement.innerHTML = `
+                                        <div class="flex items-center mb-2">
+                                            <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${description}" class="w-16 h-16">
+                                            <div class="ml-2">
+                                                <div class="text-2xl font-bold">${temp}°C</div>
+                                                <div class="capitalize">${description}</div>
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-2 text-sm">
+                                            <div>
+                                                <span class="font-semibold">Humidity:</span> ${humidity}%
+                                            </div>
+                                            <div>
+                                                <span class="font-semibold">Wind:</span> ${windSpeed} m/s
+                                            </div>
+                                        </div>
+                                    `;
+                                }
+                            } else {
+                                console.error('Weather data not available');
+                                document.getElementById(elementId).innerHTML = '<p>Weather data not available</p>';
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching weather:', error);
+                            document.getElementById(elementId).innerHTML = '<p>Failed to load weather data</p>';
+                        });
+                }
+                
+                // Load weather data when modals are opened
+                window.addEventListener('open-modal', function(event) {
+                    const modalName = event.detail;
+                    
+                    if (modalName === 'destination-santorini') {
+                        fetchWeather('Santorini,GR', 'santorini-weather');
+                    } else if (modalName === 'destination-kyoto') {
+                        fetchWeather('Kyoto,JP', 'kyoto-weather');
+                    } else if (modalName === 'destination-machu-picchu') {
+                        fetchWeather('Cusco,PE', 'machu-picchu-weather'); // Using Cusco as Machu Picchu is not a city
+                    } else if (modalName === 'destination-iceland') {
+                        fetchWeather('Reykjavik,IS', 'iceland-weather');
+                    } else if (modalName === 'destination-germany') {
+                        fetchWeather('Berlin,DE', 'germany-weather');
+                    }
+                });
+            });
+        </script>
     </head>    <body class="antialiased bg-white font-sans">
         <!-- Navigation Bar -->        <nav class="bg-white shadow-sm sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">                <div class="flex justify-between h-16">
@@ -368,6 +438,24 @@
         </div>
         
         <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-3">Current Weather</h3>
+            <div id="santorini-weather" class="bg-blue-50 p-4 rounded-lg">
+                <div class="animate-pulse flex space-x-4">
+                    <div class="rounded-full bg-slate-200 h-10 w-10"></div>
+                    <div class="flex-1 space-y-6 py-1">
+                        <div class="h-2 bg-slate-200 rounded"></div>
+                        <div class="space-y-3">
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+                                <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-6">
             <h3 class="text-xl font-semibold mb-3">About Santorini</h3>
             <p class="text-gray-700 mb-4">
                 Santorini is one of the Cyclades islands in the Aegean Sea. It was devastated by a volcanic eruption in the 16th century BC, 
@@ -429,6 +517,24 @@
             <div class="bg-green-50 p-4 rounded-lg">
                 <h3 class="font-semibold text-green-800 mb-2">Currency</h3>
                 <p class="text-gray-700">Japanese Yen (JPY)</p>
+            </div>
+        </div>
+        
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-3">Current Weather</h3>
+            <div id="kyoto-weather" class="bg-green-50 p-4 rounded-lg">
+                <div class="animate-pulse flex space-x-4">
+                    <div class="rounded-full bg-slate-200 h-10 w-10"></div>
+                    <div class="flex-1 space-y-6 py-1">
+                        <div class="h-2 bg-slate-200 rounded"></div>
+                        <div class="space-y-3">
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+                                <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="mb-6">
@@ -497,6 +603,24 @@
         </div>
         
         <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-3">Current Weather</h3>
+            <div id="machu-picchu-weather" class="bg-amber-50 p-4 rounded-lg">
+                <div class="animate-pulse flex space-x-4">
+                    <div class="rounded-full bg-slate-200 h-10 w-10"></div>
+                    <div class="flex-1 space-y-6 py-1">
+                        <div class="h-2 bg-slate-200 rounded"></div>
+                        <div class="space-y-3">
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+                                <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-6">
             <h3 class="text-xl font-semibold mb-3">About Machu Picchu</h3>
             <p class="text-gray-700 mb-4">
                 Machu Picchu is an ancient Incan citadel set high in the Andes Mountains in Peru, above the Urubamba River valley. Built in the 15th century and later abandoned, it's renowned for its sophisticated dry-stone walls that fuse huge blocks without the use of mortar.
@@ -557,6 +681,24 @@
             <div class="bg-blue-50 p-4 rounded-lg">
                 <h3 class="font-semibold text-blue-800 mb-2">Currency</h3>
                 <p class="text-gray-700">Icelandic Króna (ISK)</p>
+            </div>
+        </div>
+        
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-3">Current Weather</h3>
+            <div id="iceland-weather" class="bg-blue-50 p-4 rounded-lg">
+                <div class="animate-pulse flex space-x-4">
+                    <div class="rounded-full bg-slate-200 h-10 w-10"></div>
+                    <div class="flex-1 space-y-6 py-1">
+                        <div class="h-2 bg-slate-200 rounded"></div>
+                        <div class="space-y-3">
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+                                <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -625,6 +767,24 @@
         </div>
         
         <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-3">Current Weather</h3>
+            <div id="germany-weather" class="bg-green-50 p-4 rounded-lg">
+                <div class="animate-pulse flex space-x-4">
+                    <div class="rounded-full bg-slate-200 h-10 w-10"></div>
+                    <div class="flex-1 space-y-6 py-1">
+                        <div class="h-2 bg-slate-200 rounded"></div>
+                        <div class="space-y-3">
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+                                <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-6">
             <h3 class="text-xl font-semibold mb-3">About Germany</h3>
             <p class="text-gray-700 mb-4">
                 Germany is a Western European country with a landscape of forests, rivers, mountain ranges and North Sea beaches. It has over 2 millennia of history. Berlin, its capital, is home to art and nightlife scenes, the Brandenburg Gate and many sites relating to WWII.
@@ -687,6 +847,9 @@
     });
 </script>
 </html>
+
+
+
 
 
 

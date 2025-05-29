@@ -15,6 +15,12 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <!-- Only show Admin link for the admin user -->
+                    @if (Auth::check() && Auth::user()->email === 'sidharththakur@gmail.com')
+                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin*')">
+                            {{ __('Admin') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -98,3 +104,5 @@
         </div>
     </div>
 </nav>
+
+

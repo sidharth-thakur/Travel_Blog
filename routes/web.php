@@ -20,11 +20,21 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // Admin Routes
-Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/destinations', [App\Http\Controllers\AdminController::class, 'destinations'])->name('admin.destinations');
     Route::get('/posts', [App\Http\Controllers\AdminController::class, 'posts'])->name('admin.posts');
     Route::get('/users', [App\Http\Controllers\AdminController::class, 'users'])->name('admin.users');
     Route::delete('/users/{user}', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('admin.users.delete');
 });
+
+// Test route without middleware for debugging
+Route::get('/admin-test', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.test');
+
+
+
+
+
+
+
 

@@ -16,7 +16,6 @@
                             <h4 class="text-sm font-medium text-blue-800 mb-1">Total Users</h4>
                             <p class="text-2xl font-bold">{{ $userCount ?? 0 }}</p>
                         </div>
-                        <!-- Add more stat cards here as needed -->
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -40,3 +39,4 @@
         </div>
     </div>
 </x-app-layout>
+

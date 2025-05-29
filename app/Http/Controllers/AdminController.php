@@ -13,10 +13,19 @@ class AdminController extends Controller
      */
     public function index()
     {
-        // Get count of users for the dashboard
-        $userCount = User::count();
-        
-        return view('admin.dashboard', compact('userCount'));
+        try {
+            // Get count of users for the dashboard
+            $userCount = User::count();
+            
+            return view('admin.dashboard', compact('userCount'));
+        } catch (\Exception $e) {
+            // Log the error and return a friendly message
+            \Log::error('Admin dashboard error: ' . $e->getMessage());
+            return view('errors.custom', [
+                'message' => 'There was an error loading the admin dashboard.',
+                'details' => $e->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -40,8 +49,19 @@ class AdminController extends Controller
      */
     public function users()
     {
-        $users = User::latest()->get();
-        return view('admin.users', compact('users'));
+        try {
+            // Get all users, ordered by most recent first
+            $users = User::latest()->get();
+            
+            // Pass users to the view
+            return view('admin.users', compact('users'));
+        } catch (\Exception $e) {
+            // Log the error
+            \Log::error('Error fetching users: ' . $e->getMessage());
+            
+            // Return with error message
+            return back()->with('error', 'There was an error loading the users: ' . $e->getMessage());
+        }
     }
     
     /**

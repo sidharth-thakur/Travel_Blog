@@ -85,8 +85,7 @@
                         <div class="hidden sm:ml-10 sm:flex sm:space-x-8">                            <a href="/" class="border-amber-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                                 Home                            </a>
                             <a href="#destinations" class="border-transparent text-gray-500 hover:border-amber-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">                                Destinations
-                            </a>                            <a href="/posts" class="border-transparent text-gray-500 hover:border-amber-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                                Travel Guides                            </a>
+                            </a>                                        </a>
                             <a href="#about" class="border-transparent text-gray-500 hover:border-amber-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                                 About Me                            </a>
                             <a href="#contact" class="border-transparent text-gray-500 hover:border-amber-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">

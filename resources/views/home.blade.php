@@ -61,7 +61,9 @@
                 window.addEventListener('open-modal', function(event) {
                     const modalName = event.detail;
                     
-                    if (modalName === 'destination-santorini') {
+                    if (modalName === 'destination-bali') {
+                        fetchWeather('Denpasar,ID', 'bali-weather'); // Using Denpasar (Bali's capital)
+                    } else if (modalName === 'destination-santorini') {
                         fetchWeather('Santorini,GR', 'santorini-weather');
                     } else if (modalName === 'destination-kyoto') {
                         fetchWeather('Kyoto,JP', 'kyoto-weather');
@@ -369,6 +371,24 @@
             <div class="bg-amber-50 p-4 rounded-lg">
                 <h3 class="font-semibold text-amber-800 mb-2">Currency</h3>
                 <p class="text-gray-700">Indonesian Rupiah (IDR)</p>
+            </div>
+        </div>
+        
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-3">Current Weather</h3>
+            <div id="bali-weather" class="bg-amber-50 p-4 rounded-lg">
+                <div class="animate-pulse flex space-x-4">
+                    <div class="rounded-full bg-slate-200 h-10 w-10"></div>
+                    <div class="flex-1 space-y-6 py-1">
+                        <div class="h-2 bg-slate-200 rounded"></div>
+                        <div class="space-y-3">
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+                                <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -847,6 +867,9 @@
     });
 </script>
 </html>
+
+
+
 
 
 

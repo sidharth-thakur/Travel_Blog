@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Home') }}
         </h2>
     </x-slot>
 
@@ -15,11 +15,11 @@
             
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+                    {{ __("Welcome to your Travel Blog home page!") }}
                 </div>
             </div>
             
-            @if (Auth::user()->email === 'sidharththakur@gmail.com')
+            @if (Auth::user()?->email === 'sidharththakur@gmail.com')
                 <div class="mt-4 bg-green-50 p-4 rounded-lg border border-green-200">
                     <p class="text-green-700">You have admin access.</p>
                     <div class="mt-2">
@@ -43,7 +43,6 @@
         <li><a href="/admin/users" class="text-blue-600 hover:underline">Admin Users</a></li>
     </ul>
 </div>
-
-
+<p>Welcome, {{ Auth::user()?->name ?? 'Guest' }}!</p>
 
 

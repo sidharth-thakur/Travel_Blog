@@ -18,15 +18,16 @@ class AdminMiddleware
     {
         // Check if user is authenticated
         if (!Auth::check()) {
-            return redirect()->route('login')->with('error', 'You must be logged in to access the admin area.');
+            return redirect()->route('login');
         }
         
-        // Check if user has the specific admin email
+        // Check if user is admin (using email for now)
         if (Auth::user()->email !== 'sidharththakur@gmail.com') {
-            return redirect()->route('dashboard')->with('error', 'You do not have permission to access the admin area. Admin access is restricted to sidharththakur@gmail.com');
+            return redirect()->route('dashboard')->with('error', 'You do not have permission to access the admin area.');
         }
         
         return $next($request);
     }
 }
+
 

@@ -789,6 +789,54 @@
         <div class="mb-6">
             <h3 class="text-xl font-semibold mb-3">About Iceland</h3>
             <p class="text-gray-700 mb-4">
+                Iceland is a Nordic island country in the North Atlantic Ocean, west of Norway. It's known for its dramatic landscapes, including volcanoes, geysers, hot springs, and glaciers. The country is home to the Northern Lights and has a rich cultural heritage.
+            </p>
+            <p class="text-gray-700">
+                Reykjavik, the capital, is a vibrant city with a blend of modern and traditional influences. Iceland is also famous for its natural wonders, such as Thingvellir National Park, the Blue Lagoon, and the Golden Circle tour.
+            </p>
+        </div>
+        
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-3">Top Attractions</h3>
+            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                <li>Thingvellir National Park</li>
+                <li>Blue Lagoon</li>
+                <li>Geysir Geothermal Area</li>
+                <li>Gullfoss Waterfall</li>
+                <li>Snæfellsjökull Glacier</li>
+                <li>Reykjavik City</li>
+            </ul>
+        </div>
+        
+        <div class="flex justify-end">
+            <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-colors">
+                Plan Your Trip
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5
+                <p class="text-gray-700">Icelandic Króna (ISK)</p>
+            </div>
+        </div>
+        
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-3">Current Weather</h3>
+            <div id="iceland-weather" class="bg-blue-50 p-4 rounded-lg">
+                <div class="animate-pulse flex space-x-4">
+                    <div class="rounded-full bg-slate-200 h-10 w-10"></div>
+                    <div class="flex-1 space-y-6 py-1">
+                        <div class="h-2 bg-slate-200 rounded"></div>
+                        <div class="space-y-3">
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+                                <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-3">About Iceland</h3>
+            <p class="text-gray-700 mb-4">
                 Iceland, a Nordic island nation, is defined by its dramatic landscape with volcanoes, geysers, hot springs, lava fields, and massive glaciers. Most of the population lives in the capital, Reykjavik, which runs on geothermal power.
             </p>
             <p class="text-gray-700">
@@ -931,6 +979,7 @@
     });
 </script>
 </html>
+
 
 
 

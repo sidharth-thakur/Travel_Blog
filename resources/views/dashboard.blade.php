@@ -19,7 +19,7 @@
                 </div>
             </div>
             
-            @if (Auth::user()?->email === 'sidharththakur@gmail.com')
+            @if (Auth::check() && Auth::user()->email === 'sidharththakur@gmail.com')
                 <div class="mt-4 bg-green-50 p-4 rounded-lg border border-green-200">
                     <p class="text-green-700">You have admin access.</p>
                     <div class="mt-2">
@@ -27,7 +27,8 @@
                         <ul class="list-disc ml-5 mt-1">
                             <li><a href="{{ route('admin.dashboard') }}" class="text-green-800 underline">Admin Dashboard (using route)</a></li>
                             <li><a href="/admin" class="text-green-800 underline">Admin Dashboard (direct URL)</a></li>
-                            <li><a href="{{ route('admin.test') }}" class="text-green-800 underline">Admin Test (no middleware)</a></li>
+                            <li><a href="{{ route('admin.direct') }}" class="text-green-800 underline">Admin Dashboard (direct route)</a></li>
+                            <li><a href="{{ route('admin.test.public') }}" class="text-green-800 underline">Admin Test (no middleware)</a></li>
                         </ul>
                     </div>
                 </div>
@@ -44,5 +45,7 @@
     </ul>
 </div>
 <p>Welcome, {{ Auth::user()?->name ?? 'Guest' }}!</p>
+
+
 
 

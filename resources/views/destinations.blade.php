@@ -179,6 +179,11 @@
                         <p class="text-gray-600 mb-4">Discover tropical beaches, lush rice terraces, and spiritual temples in this Indonesian paradise.</p>
                         <span class="inline-block text-amber-600 font-medium hover:text-amber-500">Explore Bali →</span>
                     </div>
+                    <div class="absolute bottom-4 right-4">
+                        <a href="{{ route('trips.create', ['destination' => 'Bali, Indonesia']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                            Plan Trip
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Santorini Card -->
@@ -460,7 +465,12 @@
                 const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
                 
                 fetch(apiUrl)
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
                     .then(data => {
                         if (data.cod === 200) {
                             const temp = Math.round(data.main.temp);
@@ -511,5 +521,7 @@
     </script>
 </body>
 </html>
+
+
 
 

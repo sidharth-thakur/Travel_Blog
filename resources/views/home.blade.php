@@ -17,7 +17,12 @@
                     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
                     
                     fetch(url)
-                        .then(response => response.json())
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
                         .then(data => {
                             if (data.cod === 200) {
                                 const weatherElement = document.getElementById(elementId);
@@ -336,7 +341,7 @@
 </div>
 
 <!-- View All Destinations Button -->
-<div class="mt-12 text-center">
+<div class="mt-2 mb-12 text-center">
     <a href="{{ route('destinations') }}" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-colors relative overflow-hidden group">
         <span class="relative z-10">View All Destinations</span>
         <span class="absolute inset-0 bg-amber-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></span>
@@ -495,7 +500,7 @@
         </div>
         
         <div class="flex justify-end">
-            <a href="#" class="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+            <a href="{{ route('trips.create', ['destination' => 'Bali, Indonesia']) }}" class="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
                 Plan Your Trip
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -660,7 +665,7 @@
         </div>
         
         <div class="flex justify-end">
-            <a href="#" class="inline-flex items-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition-colors">
+            <a href="{{ route('trips.create', ['destination' => 'Kyoto, Japan']) }}" class="inline-flex items-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition-colors">
                 Plan Your Trip
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -742,7 +747,7 @@
         </div>
         
         <div class="flex justify-end">
-            <a href="#" class="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+            <a href="{{ route('trips.create', ['destination' => 'Machu Picchu, Peru']) }}" class="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
                 Plan Your Trip
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -765,6 +770,49 @@
         </div>
         
         <div class="relative h-80 mb-6 rounded-lg overflow-hidden">
+            <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80" alt="Iceland">
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-blue-800 mb-2">Best Time to Visit</h3>
+                <p class="text-gray-700">June to September</p>
+            </div>
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-blue-800 mb-2">Language</h3>
+                <p class="text-gray-700">Icelandic</p>
+            </div>
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-blue-800 mb-2">Currency</h3>
+                <p class="text-gray-700">Icelandic Króna (ISK)</p>
+            </div>
+        </div>
+        
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-3">Current Weather</h3>
+            <div id="iceland-weather" class="bg-blue-50 p-4 rounded-lg">
+                <div class="animate-pulse flex space-x-4">
+                    <div class="rounded-full bg-slate-200 h-10 w-10"></div>
+                    <div class="flex-1 space-y-6 py-1">
+                        <div class="h-2 bg-slate-200 rounded"></div>
+                        <div class="space-y-3">
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+                                <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-3">About Iceland</h3>
+            <p class="text-gray-700 mb-4">
+                Iceland is a Nordic island country in the North Atlantic Ocean, with a population of 360,000. It's known for its dramatic landscapes, including volcanoes, geysers, hot springs, lava fields, and massive glaciers.
+            </p>
+            <p class="text-gray-700">
+                The country is composed of 17.8% of the total land area of Europe and is the 18th largest country in Europe by area, the 102nd largest
             <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80" alt="Iceland">
         </div>
         
@@ -824,107 +872,7 @@
         </div>
         
         <div class="flex justify-end">
-            <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-colors">
-                Plan Your Trip
-                <svg xmlns
-                <p class="text-gray-700">Icelandic</p>
-            </div>
-            <div class="bg-blue-50 p-4 rounded-lg">
-                <h3 class="font-semibold text-blue-800 mb-2">Currency</h3>
-                <p class="text-gray-700">Icelandic Króna (ISK)</p>
-            </div>
-        </div>
-        
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold mb-3">Current Weather</h3>
-            <div id="iceland-weather" class="bg-blue-50 p-4 rounded-lg">
-                <div class="animate-pulse flex space-x-4">
-                    <div class="rounded-full bg-slate-200 h-10 w-10"></div>
-                    <div class="flex-1 space-y-6 py-1">
-                        <div class="h-2 bg-slate-200 rounded"></div>
-                        <div class="space-y-3">
-                            <div class="grid grid-cols-3 gap-4">
-                                <div class="h-2 bg-slate-200 rounded col-span-2"></div>
-                                <div class="h-2 bg-slate-200 rounded col-span-1"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold mb-3">About Iceland</h3>
-            <p class="text-gray-700 mb-4">
-                Iceland is a Nordic island country in the North Atlantic Ocean, west of Norway. It's known for its dramatic landscapes, including volcanoes, geysers, hot springs, and glaciers. The country is home to the Northern Lights and has a rich cultural heritage.
-            </p>
-            <p class="text-gray-700">
-                Reykjavik, the capital, is a vibrant city with a blend of modern and traditional influences. Iceland is also famous for its natural wonders, such as Thingvellir National Park, the Blue Lagoon, and the Golden Circle tour.
-            </p>
-        </div>
-        
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold mb-3">Top Attractions</h3>
-            <ul class="list-disc pl-5 space-y-2 text-gray-700">
-                <li>Thingvellir National Park</li>
-                <li>Blue Lagoon</li>
-                <li>Geysir Geothermal Area</li>
-                <li>Gullfoss Waterfall</li>
-                <li>Snæfellsjökull Glacier</li>
-                <li>Reykjavik City</li>
-            </ul>
-        </div>
-        
-        <div class="flex justify-end">
-            <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-colors">
-                Plan Your Trip
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5
-                <p class="text-gray-700">Icelandic Króna (ISK)</p>
-            </div>
-        </div>
-        
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold mb-3">Current Weather</h3>
-            <div id="iceland-weather" class="bg-blue-50 p-4 rounded-lg">
-                <div class="animate-pulse flex space-x-4">
-                    <div class="rounded-full bg-slate-200 h-10 w-10"></div>
-                    <div class="flex-1 space-y-6 py-1">
-                        <div class="h-2 bg-slate-200 rounded"></div>
-                        <div class="space-y-3">
-                            <div class="grid grid-cols-3 gap-4">
-                                <div class="h-2 bg-slate-200 rounded col-span-2"></div>
-                                <div class="h-2 bg-slate-200 rounded col-span-1"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold mb-3">About Iceland</h3>
-            <p class="text-gray-700 mb-4">
-                Iceland, a Nordic island nation, is defined by its dramatic landscape with volcanoes, geysers, hot springs, lava fields, and massive glaciers. Most of the population lives in the capital, Reykjavik, which runs on geothermal power.
-            </p>
-            <p class="text-gray-700">
-                The country is renowned for its otherworldly beauty, the Northern Lights, and its progressive environmental policies. Despite its name, Iceland's climate is relatively mild, thanks to the Gulf Stream, though winters can be cold and dark.
-            </p>
-        </div>
-        
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold mb-3">Top Attractions</h3>
-            <ul class="list-disc pl-5 space-y-2 text-gray-700">
-                <li>Blue Lagoon</li>
-                <li>Golden Circle</li>
-                <li>Vatnajökull National Park</li>
-                <li>Jökulsárlón Glacier Lagoon</li>
-                <li>Reynisfjara Black Sand Beach</li>
-                <li>Northern Lights</li>
-            </ul>
-        </div>
-        
-        <div class="flex justify-end">
-            <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-colors">
+            <a href="{{ route('trips.create', ['destination' => 'Reykjavik, Iceland']) }}" class="inline-flex items-center px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-colors">
                 Plan Your Trip
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -1046,6 +994,13 @@
     });
 </script>
 </html>
+
+
+
+
+
+
+
 
 
 

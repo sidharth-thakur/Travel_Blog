@@ -25,6 +25,9 @@
                     <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
                         {{ __('Contact') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('trips.index')" :active="request()->routeIs('trips.*')">
+                        {{ __('Trip Planning') }}
+                    </x-nav-link>
                     <!-- Only show Admin link for the admin user -->
                     @if (Auth::check() && Auth::user()->email === 'sidharththakur@gmail.com')
                         <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin*')">
@@ -138,6 +141,8 @@
         </div>
     </div>
 </nav>
+
+
 
 
 

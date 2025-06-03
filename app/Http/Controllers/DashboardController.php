@@ -1,9 +1,6 @@
 public function index()
 {
-    $user = Auth::user();
-    
-    return view('dashboard', [
-        'userName' => $user ? $user->name : 'Guest',
-        // Other data...
-    ]);
+    $trips = Auth::user()->trips()->latest()->take(6)->get();
+    return view('dashboard', compact('trips'));
 }
+

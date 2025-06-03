@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TripController;
 
 // Home route
 Route::get('/', function () {
@@ -93,31 +94,36 @@ Route::get('/db-test', function () {
     }
 });
 
+// Trip Planning Routes
+Route::middleware(['auth'])->group(function () {
+    Route::resource('trips', TripController::class);
+    Route::post('trips/{trip}/share', [TripController::class, 'share'])->name('trips.share');
+    Route::post('trips/{trip}/export', [TripController::class, 'export'])->name('trips.export');
+    Route::get('trips/{trip}/thank-you', [TripController::class, 'thankYou'])->name('trips.thank-you');
+    
+    // API routes for trip planning features
+    Route::prefix('api')->middleware(['auth'])->group(function () {
+        Route::post('trips/{trip}/itinerary', [TripController::class, 'updateItinerary']);
+        Route::post('trips/{trip}/expenses', [TripController::class, 'updateExpenses']);
+        Route::post('trips/{trip}/packing-list', [TripController::class, 'updatePackingList']);
+        Route::get('weather/{destination}', [TripController::class, 'getWeather']);
+    });
+});
 
+// Add this route for saving all trip details
+Route::post('trips/{trip}/save-all', [App\Http\Controllers\TripController::class, 'saveAll'])
+    ->name('trips.saveAll')
+    ->middleware(['auth']);
 
+// Add this route for the thank you page
+Route::get('trips/{trip}/thank-you', [App\Http\Controllers\TripController::class, 'thankYou'])
+    ->name('trips.thank-you')
+    ->middleware(['auth']);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Make sure this route is defined correctly
+Route::get('trips/{trip}', [App\Http\Controllers\TripController::class, 'show'])
+    ->name('trips.show')
+    ->middleware(['auth']);
 
 
 

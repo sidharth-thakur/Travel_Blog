@@ -89,9 +89,7 @@
                             <a href="#destinations" class="border-transparent text-gray-500 hover:border-amber-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                                 Destinations
                             </a>
-                            <a href="/posts" class="border-transparent text-gray-500 hover:border-amber-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                                Travel Guides
-                            </a>
+                           
                             <a href="/contact" class="border-transparent text-gray-500 hover:border-amber-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                                 Contact
                             </a>
@@ -204,15 +202,13 @@
                 </div>
                 <div class="absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900/30" style="height: 100vh;"></div>
             </div>
-            <div class="relative max-w-5xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 text-center" style="top : 95px;">
-                <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">Discover Amazing Places</h1>
-                <p class="mt-6 text-xl text-white max-w-3xl mx-auto">Travel guides, tips, and photography from destinations around the world.</p>
+            <div class="relative max-w-5xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 text-center" style="top : 100px;">
+                <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">EXPLORE. DREAM. DISCOVER.</h1>
+                <p class="mt-6 text-2xl text-white max-w-3xl mx-auto">Discover Amazing Wonders of India.</p>
                 <div class="mt-10 flex justify-center space-x-4">
-                    <a href="/posts" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-colors">
-                        Travel Guides
-                    </a>
-                    <a href="#destinations" class="inline-block bg-white hover:bg-gray-100 text-gray-800 font-bold py-3 px-8 rounded-lg shadow-md transition-colors">
-                        Explore Destinations
+                    <a href="/destinations" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-colors delay-[2000ms] relative overflow-hidden group">
+                        <span class="relative z-10">Explore Destinations</span>
+                        <span class="absolute inset-0 bg-amber-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></span>
                     </a>
                 </div>
             </div>
@@ -979,6 +975,8 @@
     });
 </script>
 </html>
+
+
 
 
 

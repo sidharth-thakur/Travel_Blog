@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\DestinationController;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProfileController;
 
 // Home route
 Route::get('/', function () {
@@ -81,6 +82,18 @@ Route::get('/admin-direct', function () {
 // Public post routes
 Route::get('/blog', [PostController::class, 'index'])->name('posts.index');
 Route::get('/blog/{post:slug}', [PostController::class, 'show'])->name('posts.show');
+
+// Test database connection
+Route::get('/db-test', function () {
+    try {
+        DB::connection()->getPdo();
+        return "Database connection successful. Connected to: " . DB::connection()->getDatabaseName();
+    } catch (\Exception $e) {
+        return "Database connection failed: " . $e->getMessage();
+    }
+});
+
+
 
 
 

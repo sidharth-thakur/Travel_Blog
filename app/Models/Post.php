@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Post extends Model
 {
@@ -17,21 +18,39 @@ class Post extends Model
         'content',
         'featured_image',
         'status',
-        'published_at',
+        'published_at'
     ];
 
     protected $casts = [
         'published_at' => 'datetime',
     ];
 
+    /**
+     * Get the user that owns the post.
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function getRouteKeyName()
+    /**
+     * Set the post's slug.
+     */
+    public function setTitleAttribute($value)
     {
-        return 'slug';
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
+    }
+
+    /**
+     * Scope a query to only include published posts.
+     */
+    public function scopePublished($query)
+    {
+        return $query->where('status', 'published')
+                     ->where('published_at', '<=', now())
+                     ->orderBy('published_at', 'desc');
     }
 }
+
 

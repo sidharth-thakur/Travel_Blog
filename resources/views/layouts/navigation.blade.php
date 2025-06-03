@@ -6,7 +6,11 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                         <div class="flex items-center">
+                        <a href="/" class="flex-shrink-0 flex items-center">
+                            <span class="text-black font-bold text-xl">The Traveller</span>
+                        </a>
+                    </div>
                     </a>
                 </div>
 
@@ -15,7 +19,10 @@
                     <x-nav-link :href="url('/')" :active="request()->is('/')">
                         {{ __('Home') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('contact')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('destinations')" :active="request()->routeIs('destinations')">
+                        {{ __('Destinations') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
                         {{ __('Contact') }}
                     </x-nav-link>
                     <!-- Only show Admin link for the admin user -->
@@ -131,6 +138,7 @@
         </div>
     </div>
 </nav>
+
 
 
 

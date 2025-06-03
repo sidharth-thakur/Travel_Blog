@@ -11,6 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Drop the existing posts table if it exists
+        Schema::dropIfExists('posts');
+        
+        // Recreate the posts table with the correct schema
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
@@ -33,5 +37,3 @@ return new class extends Migration
         Schema::dropIfExists('posts');
     }
 };
-
-

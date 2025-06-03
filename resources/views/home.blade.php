@@ -78,115 +78,126 @@
             });
         </script>
     </head>    <body class="antialiased bg-white font-sans">
-        <!-- Navigation Bar -->        <nav class="bg-white shadow-sm sticky top-0 z-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">                <div class="flex justify-between h-16">
-                    <div class="flex">                        <div class="flex-shrink-0 flex items-center">
-                            <span class="text-2xl font-bold text-amber-600">TravelBlog</span>                        </div>
-                        <div class="hidden sm:ml-10 sm:flex sm:space-x-8">
-                            <a href="/" class="border-amber-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                                Home
-                            </a>
-                            <a href="#destinations" class="border-transparent text-gray-500 hover:border-amber-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                                Destinations
-                            </a>
-                           
-                            <a href="/contact" class="border-transparent text-gray-500 hover:border-amber-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                                Contact
-                            </a>
-                            <a href="#about" class="border-transparent text-gray-500 hover:border-amber-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                                About Me
-                            </a>
-                        </div>                    </div>
-                    <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                        @if (Route::has('login'))
-                            @auth
-                                <div class="relative">
-                                    <x-dropdown align="right" width="48">
-                                        <x-slot name="trigger">
-                                            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                                <div>{{ Auth::user()->name }}</div>
-
-                                                <div class="ms-1">
-                                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </div>
-                                            </button>
-                                        </x-slot>
-
-                                        <x-slot name="content">
-                                            <x-dropdown-link :href="route('dashboard')">
-                                                {{ __('Dashboard') }}
-                                            </x-dropdown-link>
-                                            
-                                            <x-dropdown-link :href="route('profile.edit')">
-                                                {{ __('Profile') }}
-                                            </x-dropdown-link>
-
-                                            <!-- Authentication -->
-                                            <form method="POST" action="{{ route('logout') }}">
-                                                @csrf
-
-                                                <x-dropdown-link :href="route('logout')"
-                                                        onclick="event.preventDefault();
-                                                                    this.closest('form').submit();">
-                                                    {{ __('Log Out') }}
-                                                </x-dropdown-link>
-                                            </form>
-                                        </x-slot>
-                                    </x-dropdown>
-                                </div>
-                            @else
-                                <a href="{{ route('login') }}" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">Login</a>
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="ml-3 text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Register</a>
-                                @endif
-                            @endauth
-                        @endif
+        <!-- Navigation Bar -->
+        <nav class="fixed top-0 left-0 right-0 bg-gray-900 shadow-md z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <a href="/" class="flex-shrink-0 flex items-center">
+                            <span class="text-white font-bold text-xl">The Traveller</span>
+                        </a>
                     </div>
-                    <!-- Mobile menu button -->                    <div class="flex items-center sm:hidden">
-                        <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500" aria-controls="mobile-menu" aria-expanded="false">                            <span class="sr-only">Open main menu</span>
-                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>                        </button>
-                    </div>                </div>
-            </div>            
-            <!-- Mobile menu -->            <div class="sm:hidden hidden" id="mobile-menu">
-                <div class="pt-2 pb-3 space-y-1">
-                    <a href="/" class="bg-amber-50 border-amber-500 text-amber-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
-                    <a href="#destinations" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-amber-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Destinations</a>
-                    <a href="/posts" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-amber-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Travel Guides</a>
-                    <a href="/contact" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-amber-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact</a>
-                    <a href="#about" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-amber-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About Me</a>
-                </div>
-                <div class="pt-4 pb-3 border-t border-gray-200">
-                    @if (Route::has('login'))
-                        <div class="mt-3 space-y-1">
-                            @auth
-                                <div class="px-4">
-                                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-                                </div>
+                    
+                    <div class="hidden sm:ml-6 sm:flex sm:items-center space-x-8">
+                        <a href="/" class="text-amber-500 border-b-2 border-amber-500 px-3 py-5 text-sm font-medium">Home</a>
+                        <a href="/posts" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Blog</a>
+                        <a href="{{ route('destinations') }}" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Destinations</a>
+                      
+                       
+                        <a href="/about" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">About</a>
+                        <a href="/contact" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Contact</a>
+                        
+                    </div>
+                    
+                    <!-- User Menu / Auth Buttons -->
+                    <div class="hidden sm:flex sm:items-center sm:ml-6">
+                        @auth
+                            <div class="relative" x-data="{ open: false }">
+                                <button @click="open = !open" class="flex items-center text-sm font-medium text-gray-300 hover:text-white focus:outline-none transition duration-150 ease-in-out">
+                                    <span>{{ Auth::user()->name }}</span>
+                                    <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
                                 
-                                <div class="mt-3 space-y-1">
-                                    <a href="{{ url('/dashboard') }}" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Dashboard</a>
-                                    <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Profile</a>
-                                    
-                                    <!-- Authentication -->
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <button type="submit" class="w-full text-left block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
-                                            Log Out
-                                        </button>
-                                    </form>
+                                <div x-show="open" 
+                                     @click.away="open = false"
+                                     x-transition:enter="transition ease-out duration-200"
+                                     x-transition:enter-start="transform opacity-0 scale-95"
+                                     x-transition:enter-end="transform opacity-100 scale-100"
+                                     x-transition:leave="transition ease-in duration-75"
+                                     x-transition:leave-start="transform opacity-100 scale-100"
+                                     x-transition:leave-end="transform opacity-0 scale-95"
+                                     class="absolute right-0 z-50 mt-2 w-48 rounded-md shadow-lg origin-top-right"
+                                     style="display: none;">
+                                    <div class="rounded-md ring-1 ring-black ring-opacity-5 py-1 bg-white">
+                                        <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
+                                        <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                                        
+                                        <!-- Logout Form -->
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                                Log Out
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
-                            @else
-                                <a href="{{ route('login') }}" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Login</a>
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Register</a>
-                                @endif
-                            @endauth
+                            </div>
+                        @else
+                            <div class="flex space-x-4">
+                                <a href="{{ route('login') }}" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Log in</a>
+                                <a href="{{ route('register') }}" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-md text-sm font-medium">Register</a>
+                            </div>
+                        @endauth
+                    </div>
+                    
+                    <!-- Mobile menu button -->
+                    <div class="flex items-center sm:hidden">
+                        <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div class="sm:hidden hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="/" class="text-amber-500 block px-3 py-2 text-base font-medium">Home</a>
+                    <a href="/posts" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Blog</a>
+                    <a href="/destinations" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Destinations</a>
+                    <a href="#" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Categories</a>
+                    <a href="#" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Gallery</a>
+                    <a href="/about" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">About</a>
+                    <a href="/contact" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Contact</a>
+                </div>
+                
+                <!-- Mobile auth menu -->
+                <div class="pt-4 pb-3 border-t border-gray-700">
+                    @auth
+                        <div class="flex items-center px-5">
+                            <div class="flex-shrink-0">
+                                <div class="h-10 w-10 rounded-full bg-gray-500 flex items-center justify-center">
+                                    <span class="text-white font-medium">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                                </div>
+                            </div>
+                            <div class="ml-3">
+                                <div class="text-base font-medium text-white">{{ Auth::user()->name }}</div>
+                                <div class="text-sm font-medium text-gray-400">{{ Auth::user()->email }}</div>
+                            </div>
                         </div>
-                    @endif
+                        <div class="mt-3 px-2 space-y-1">
+                            <a href="{{ route('dashboard') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Dashboard</a>
+                            <a href="{{ route('profile.edit') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Profile</a>
+                            
+                            <!-- Logout Form -->
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">
+                                    Log Out
+                                </button>
+                            </form>
+                        </div>
+                    @else
+                        <div class="mt-3 px-2 space-y-1">
+                            <a href="{{ route('login') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Log in</a>
+                            <a href="{{ route('register') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Register</a>
+                        </div>
+                    @endauth
                 </div>
             </div>
         </nav>
@@ -206,9 +217,9 @@
                 <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">EXPLORE. DREAM. DISCOVER.</h1>
                 <p class="mt-6 text-2xl text-white max-w-3xl mx-auto">Discover Amazing Wonders of India.</p>
                 <div class="mt-10 flex justify-center space-x-4">
-                    <a href="/destinations" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-colors delay-[2000ms] relative overflow-hidden group">
+                    <a href="{{ route('destinations') }}" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-colors duration-1000 ease-in-out relative overflow-hidden group">
                         <span class="relative z-10">Explore Destinations</span>
-                        <span class="absolute inset-0 bg-amber-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></span>
+                        <span class="absolute inset-0 bg-amber-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-1000 ease-in-out"></span>
                     </a>
                 </div>
             </div>
@@ -322,6 +333,14 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- View All Destinations Button -->
+<div class="mt-12 text-center">
+    <a href="{{ route('destinations') }}" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-colors relative overflow-hidden group">
+        <span class="relative z-10">View All Destinations</span>
+        <span class="absolute inset-0 bg-amber-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></span>
+    </a>
 </div>
 
 <!-- Footer -->
@@ -785,6 +804,58 @@
         <div class="mb-6">
             <h3 class="text-xl font-semibold mb-3">About Iceland</h3>
             <p class="text-gray-700 mb-4">
+                Iceland is a Nordic island country in the North Atlantic Ocean, with a population of 360,000. It's known for its dramatic landscapes, including volcanoes, geysers, hot springs, and glaciers.
+            </p>
+            <p class="text-gray-700">
+                The country is home to the Northern Lights, which can be seen in the winter months, and it's a popular destination for hiking, skiing, and whale watching.
+            </p>
+        </div>
+        
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-3">Top Attractions</h3>
+            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                <li>Blue Lagoon</li>
+                <li>Geysir Geothermal Area</li>
+                <li>Gullfoss Waterfall</li>
+                <li>Thingvellir National Park</li>
+                <li>Reykjavik City</li>
+                <li>Snæfellsjökull Glacier</li>
+            </ul>
+        </div>
+        
+        <div class="flex justify-end">
+            <a href="#" class="inline-flex items-center px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-colors">
+                Plan Your Trip
+                <svg xmlns
+                <p class="text-gray-700">Icelandic</p>
+            </div>
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-blue-800 mb-2">Currency</h3>
+                <p class="text-gray-700">Icelandic Króna (ISK)</p>
+            </div>
+        </div>
+        
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-3">Current Weather</h3>
+            <div id="iceland-weather" class="bg-blue-50 p-4 rounded-lg">
+                <div class="animate-pulse flex space-x-4">
+                    <div class="rounded-full bg-slate-200 h-10 w-10"></div>
+                    <div class="flex-1 space-y-6 py-1">
+                        <div class="h-2 bg-slate-200 rounded"></div>
+                        <div class="space-y-3">
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+                                <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-3">About Iceland</h3>
+            <p class="text-gray-700 mb-4">
                 Iceland is a Nordic island country in the North Atlantic Ocean, west of Norway. It's known for its dramatic landscapes, including volcanoes, geysers, hot springs, and glaciers. The country is home to the Northern Lights and has a rich cultural heritage.
             </p>
             <p class="text-gray-700">
@@ -975,6 +1046,12 @@
     });
 </script>
 </html>
+
+
+
+
+
+
 
 
 

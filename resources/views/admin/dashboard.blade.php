@@ -11,20 +11,32 @@
                 <div class="p-6 text-gray-900">
                     <h3 class="text-lg font-medium mb-4">Welcome to the Admin Dashboard</h3>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                            <h4 class="font-medium mb-2">User Management</h4>
-                            <p class="text-sm text-gray-600 mb-3">Manage users and permissions</p>
-                            <div class="flex justify-between items-center">
-                                <a href="{{ route('admin.users') }}" class="text-blue-600 hover:underline text-sm">Manage Users →</a>
-                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">{{ $userCount ?? 0 }} Users</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- User Management Card -->
+                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                            <div class="p-6">
+                                <h3 class="text-lg font-medium text-gray-900 mb-2">User Management</h3>
+                                <p class="text-gray-600 mb-4">Manage user accounts and permissions.</p>
+                                <a href="{{ route('admin.users') }}" class="text-blue-600 hover:text-blue-800">Manage Users →</a>
                             </div>
                         </div>
                         
-                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                            <h4 class="font-medium mb-2">Content Management</h4>
-                            <p class="text-sm text-gray-600 mb-3">Manage blog posts and pages</p>
-                            <a href="#" class="text-blue-600 hover:underline text-sm">Manage Content →</a>
+                        <!-- Post Management Card -->
+                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                            <div class="p-6">
+                                <h3 class="text-lg font-medium text-gray-900 mb-2">Content Management</h3>
+                                <p class="text-gray-600 mb-4">Manage blog posts and content.</p>
+                                <a href="{{ route('admin.posts') }}" class="text-blue-600 hover:text-blue-800">Manage Posts →</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Destination Management Card -->
+                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                            <div class="p-6">
+                                <h3 class="text-lg font-medium text-gray-900 mb-2">Destination Management</h3>
+                                <p class="text-gray-600 mb-4">Manage travel destinations and details.</p>
+                                <a href="{{ route('admin.destinations') }}" class="text-blue-600 hover:text-blue-800">Manage Destinations →</a>
+                            </div>
                         </div>
                     </div>
                     
@@ -58,6 +70,7 @@
         </div>
     </div>
 </x-app-layout>
+
 
 
 

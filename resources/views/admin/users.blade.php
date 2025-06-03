@@ -11,6 +11,18 @@
                 <div class="p-6 text-gray-900">
                     <h3 class="text-lg font-medium mb-4">User Management</h3>
                     
+                    @if(session('success'))
+                        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
+                            <p>{{ session('success') }}</p>
+                        </div>
+                    @endif
+                    
+                    @if(session('error'))
+                        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert">
+                            <p>{{ session('error') }}</p>
+                        </div>
+                    @endif
+                    
                     <div class="mb-6">
                         <form action="{{ route('admin.users') }}" method="GET" class="flex items-center">
                             <div class="relative flex-grow">
@@ -71,9 +83,17 @@
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{ $user->email }}</td>
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{ $user->created_at->format('M d, Y') }}</td>
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium">
-                                                <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
+                                                <a href="{{ route('admin.users.edit', $user->id) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
+                                                
                                                 @if($user->email !== 'sidharththakur@gmail.com')
-                                                    <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
+                                                    <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="text-red-600 hover:text-red-900" 
+                                                                onclick="return confirm('Are you sure you want to delete this user?')">
+                                                            Delete
+                                                        </button>
+                                                    </form>
                                                 @endif
                                             </td>
                                         </tr>
@@ -93,6 +113,8 @@
         </div>
     </div>
 </x-app-layout>
+
+
 
 
 

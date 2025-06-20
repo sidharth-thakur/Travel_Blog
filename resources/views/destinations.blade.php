@@ -200,6 +200,11 @@
                         <p class="text-gray-600 mb-4">Experience the iconic white buildings, blue domes, and breathtaking sunsets of this Greek island.</p>
                         <span class="inline-block text-amber-600 font-medium hover:text-amber-500">Explore Santorini →</span>
                     </div>
+                    <div class="absolute bottom-4 right-4">
+                        <a href="{{ route('trips.create', ['destination' => 'Santorini, Greece']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                            Plan Trip
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Kyoto Card -->
@@ -263,6 +268,27 @@
                     <div class="p-6">
                         <p class="text-gray-600 mb-4">Relax in paradise with crystal clear waters, white sandy beaches, and luxurious overwater bungalows.</p>
                         <span class="inline-block text-amber-600 font-medium hover:text-amber-500">Explore Maldives →</span>
+                    </div>
+                </div>
+
+                <!-- Germany Card -->
+                <div class="destination-card group rounded-xl overflow-hidden shadow-lg bg-white transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl cursor-pointer" x-data="{}" x-on:click="$dispatch('open-modal', 'destination-germany')" data-destination="destination-germany">
+                    <div class="h-64 w-full relative overflow-hidden">
+                        <img class="h-full w-full object-cover transition duration-700 ease-in-out group-hover:scale-110" src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Germany">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-70 group-hover:opacity-90 transition duration-300"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white">Germany</h3>
+                            <p class="text-sm text-amber-300">Europe</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Discover historic cities, fairytale castles, and beautiful landscapes in the heart of Europe.</p>
+                        <span class="inline-block text-amber-600 font-medium hover:text-amber-500">Explore Germany →</span>
+                    </div>
+                    <div class="absolute bottom-4 right-4">
+                        <a href="{{ route('trips.create', ['destination' => 'Berlin, Germany']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                            Plan Trip
+                        </a>
                     </div>
                 </div>
             </div>
@@ -521,6 +547,10 @@
     </script>
 </body>
 </html>
+
+
+
+
 
 
 

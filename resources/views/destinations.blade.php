@@ -655,7 +655,7 @@
             <p class="text-sm text-gray-600">Loading weather data...</p>
         </div>
         <div class="mb-6">
-            <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Iceland" class="w-full h-64 object-cover rounded-lg">
+            <img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Iceland" class="w-full h-64 object-cover rounded-lg">
         </div>
         <p class="text-gray-700 mb-6">Iceland is a Nordic island nation defined by dramatic landscapes with volcanoes, geysers, hot springs, and lava fields, and is famous for the Northern Lights.</p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
@@ -701,7 +701,7 @@
             <p class="text-sm text-gray-600">Loading weather data...</p>
         </div>
         <div class="mb-6">
-            <img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Maldives" class="w-full h-64 object-cover rounded-lg">
+            <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Maldives" class="w-full h-64 object-cover rounded-lg">
         </div>
         <p class="text-gray-700 mb-6">The Maldives is a tropical paradise in the Indian Ocean, known for its crystal-clear waters, white-sand beaches, and luxurious overwater bungalows.</p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">

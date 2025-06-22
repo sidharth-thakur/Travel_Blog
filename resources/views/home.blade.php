@@ -95,11 +95,8 @@
                     
                     <div class="hidden sm:ml-6 sm:flex sm:items-center space-x-8">
                         <a href="/" class="text-amber-500 border-b-2 border-amber-500 px-3 py-5 text-sm font-medium">Home</a>
-                        
                         <a href="{{ route('destinations') }}" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Destinations</a>
-                      
-                       
-                        <a href="/about" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">About</a>
+                        <a href="{{ route('about') }}" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">About</a>
                         <a href="/contact" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Contact</a>
                         
                     </div>
@@ -359,7 +356,7 @@
                 <ul class="space-y-2">
                     <li><a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
                     <li><a href="#destinations" class="text-gray-300 hover:text-white transition-colors">Destinations</a></li>
-                    <li><a href="/posts" class="text-gray-300 hover:text-white transition-colors">Blog</a></li>
+                  
                     <li><a href="/contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
                     <li><a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a></li>
                 </ul>

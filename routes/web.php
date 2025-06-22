@@ -8,6 +8,7 @@ use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TripController;
+use App\Http\Controllers\AboutController; // <-- Add this line
 
 // Home route
 Route::get('/', function () {
@@ -31,6 +32,9 @@ Route::middleware('auth')->group(function () {
 // Contact routes
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
+
+// About page route
+Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 require __DIR__.'/auth.php';
 
@@ -67,10 +71,6 @@ Route::get('/admin/{any}', function () {
     }
     return redirect()->route('dashboard')->with('error', 'You do not have permission to access the admin area.');
 })->where('any', '.*')->middleware('auth');
-
-// Add these routes to your existing web.php file
-Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
-Route::post('/contact', [App\Http\Controllers\ContactController::class, 'submit'])->name('contact.submit');
 
 // Simple admin route without middleware for testing
 Route::get('/admin-direct', function () {
@@ -124,14 +124,3 @@ Route::get('trips/{trip}/thank-you', [App\Http\Controllers\TripController::class
 Route::get('trips/{trip}', [App\Http\Controllers\TripController::class, 'show'])
     ->name('trips.show')
     ->middleware(['auth']);
-
-
-
-
-
-
-
-
-
-
-

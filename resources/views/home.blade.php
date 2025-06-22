@@ -95,7 +95,7 @@
                     
                     <div class="hidden sm:ml-6 sm:flex sm:items-center space-x-8">
                         <a href="/" class="text-amber-500 border-b-2 border-amber-500 px-3 py-5 text-sm font-medium">Home</a>
-                        <a href="/posts" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Blog</a>
+                        
                         <a href="{{ route('destinations') }}" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Destinations</a>
                       
                        
@@ -163,11 +163,9 @@
             <div class="sm:hidden hidden" id="mobile-menu">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="/" class="text-amber-500 block px-3 py-2 text-base font-medium">Home</a>
-                    <a href="/posts" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Blog</a>
+                    
                     <a href="/destinations" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Destinations</a>
-                    <a href="#" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Categories</a>
-                    <a href="#" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Gallery</a>
-                    <a href="/about" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">About</a>
+                  
                     <a href="/contact" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Contact</a>
                 </div>
                 

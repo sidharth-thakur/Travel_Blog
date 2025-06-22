@@ -23,7 +23,7 @@
                     
                     <div class="hidden sm:ml-6 sm:flex sm:items-center space-x-8">
                         <a href="/" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Home</a>
-                        <a href="/posts" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Blog</a>
+                        
                         <a href="{{ route('destinations') }}" class="text-amber-500 border-b-2 border-amber-500 px-3 py-5 text-sm font-medium">Destinations</a>
                       
                        
@@ -91,7 +91,7 @@
             <div class="sm:hidden hidden" id="mobile-menu">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="/" class="text-amber-500 block px-3 py-2 text-base font-medium">Home</a>
-                    <a href="/posts" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Blog</a>
+                   
                     <a href="/destinations" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Destinations</a>
                     <a href="#" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Categories</a>
                     <a href="#" class="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Gallery</a>
@@ -221,6 +221,11 @@
                         <p class="text-gray-600 mb-4">Immerse yourself in Japanese culture with ancient temples, traditional gardens, and historic districts.</p>
                         <span class="inline-block text-amber-600 font-medium hover:text-amber-500">Explore Kyoto →</span>
                     </div>
+                    <div class="absolute bottom-4 right-4">
+                        <a href="{{ route('trips.create', ['destination' => 'Bali, Indonesia']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                            Plan Trip
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Machu Picchu Card -->
@@ -236,6 +241,11 @@
                     <div class="p-6">
                         <p class="text-gray-600 mb-4">Explore the ancient Incan citadel set high in the Andes Mountains, surrounded by breathtaking views.</p>
                         <span class="inline-block text-amber-600 font-medium hover:text-amber-500">Explore Machu Picchu →</span>
+                    </div>
+                    <div class="absolute bottom-4 right-4">
+                        <a href="{{ route('trips.create', ['destination' => 'Bali, Indonesia']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                            Plan Trip
+                        </a>
                     </div>
                 </div>
 
@@ -253,6 +263,11 @@
                         <p class="text-gray-600 mb-4">Experience dramatic landscapes with volcanoes, geysers, hot springs, and stunning northern lights.</p>
                         <span class="inline-block text-amber-600 font-medium hover:text-amber-500">Explore Iceland →</span>
                     </div>
+                    <div class="absolute bottom-4 right-4">
+                        <a href="{{ route('trips.create', ['destination' => 'Bali, Indonesia']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                            Plan Trip
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Maldives Card -->
@@ -268,6 +283,11 @@
                     <div class="p-6">
                         <p class="text-gray-600 mb-4">Relax in paradise with crystal clear waters, white sandy beaches, and luxurious overwater bungalows.</p>
                         <span class="inline-block text-amber-600 font-medium hover:text-amber-500">Explore Maldives →</span>
+                    </div>
+                    <div class="absolute bottom-4 right-4">
+                        <a href="{{ route('trips.create', ['destination' => 'Bali, Indonesia']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                            Plan Trip
+                        </a>
                     </div>
                 </div>
 
@@ -291,18 +311,51 @@
                         </a>
                     </div>
                 </div>
+
+                <!-- paris -->
+                 <div class="destination-card group rounded-xl overflow-hidden shadow-lg bg-white transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl cursor-pointer" x-data="{}" x-on:click="$dispatch('open-modal', 'destination-germany')" data-destination="destination-germany">
+                    <div class="h-64 w-full relative overflow-hidden">
+                        <img class="h-full w-full object-cover transition duration-700 ease-in-out group-hover:scale-110" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?&auto=format&fit=crop&w=1770&q=80" alt="Paris">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-70 group-hover:opacity-90 transition duration-300"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white">Paris</h3>
+                            <p class="text-sm text-amber-300">Europe</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Discover historic cities, fairytale castles, and beautiful landscapes in the heart of Europe.</p>
+                        <span class="inline-block text-amber-600 font-medium hover:text-amber-500">Explore Germany →</span>
+                    </div>
+                    <div class="absolute bottom-4 right-4">
+                        <a href="{{ route('trips.create', ['destination' => 'Berlin, Germany']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                            Plan Trip
+                        </a>
+                    </div>
+                </div>
+
+                <!-- india -->
+                 <div class="destination-card group rounded-xl overflow-hidden shadow-lg bg-white transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl cursor-pointer" x-data="{}" x-on:click="$dispatch('open-modal', 'destination-germany')" data-destination="destination-germany">
+                    <div class="h-64 w-full relative overflow-hidden">
+                        <img class="h-full w-full object-cover transition duration-700 ease-in-out group-hover:scale-110" src="https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?&auto=format&fit=crop&w=1770&q=80" alt="India">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-70 group-hover:opacity-90 transition duration-300"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white">Delhi</h3>
+                            <p class="text-sm text-amber-300">India</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Discover historic cities, fairytale castles, and beautiful landscapes in the heart of Europe.</p>
+                        <span class="inline-block text-amber-600 font-medium hover:text-amber-500">Explore Germany →</span>
+                    </div>
+                    <div class="absolute bottom-4 right-4">
+                        <a href="{{ route('trips.create', ['destination' => 'Berlin, Germany']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                            Plan Trip
+                        </a>
+                    </div>
+                </div>
             </div>
             
-            <!-- Load More Button -->
-            <div class="mt-12 text-center">
-                <button class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-colors relative overflow-hidden group">
-                    <span class="relative z-10">Load More Destinations</span>
-                    <span class="absolute inset-0 bg-amber-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></span>
-                </button>
-            </div>
-        </div>
-    </div>
-    
+          
     <!-- Map Section -->
     <div class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -467,7 +520,11 @@
                 { name: 'Kyoto', coords: [35.0116, 135.7681], modal: 'destination-kyoto' },
                 { name: 'Machu Picchu', coords: [-13.1631, -72.5450], modal: 'destination-machu-picchu' },
                 { name: 'Iceland', coords: [64.9631, -19.0208], modal: 'destination-iceland' },
-                { name: 'Maldives', coords: [3.2028, 73.2207], modal: 'destination-maldives' }
+                { name: 'Maldives', coords: [3.2028, 73.2207], modal: 'destination-maldives' },
+                { name: 'Germany', coords: [51.1657, 10.4515], modal: 'destination-germany' },
+                { name: 'India', coords: [20.5937, 78.9629], modal: 'destination-india' },
+                { name: 'Paris', coords: [48.8566, 2.3522], modal: 'destination-paris' }
+
             ];
             
             destinations.forEach(dest => {

@@ -502,6 +502,375 @@
         </div>
     </x-modal>
 
+    <!-- Santorini -->
+<x-modal name="destination-santorini" :show="false" maxWidth="2xl">
+    <div class="p-6">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-3xl font-bold text-gray-900">Santorini, Greece</h2>
+            <button x-on:click="$dispatch('close-modal', 'destination-santorini')" class="text-gray-500 hover:text-gray-700">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div id="santorini-weather" class="mb-4 p-3 bg-blue-50 rounded-lg">
+            <p class="text-sm text-gray-600">Loading weather data...</p>
+        </div>
+        <div class="mb-6">
+            <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80" alt="Santorini" class="w-full h-64 object-cover rounded-lg">
+        </div>
+        <p class="text-gray-700 mb-6">Santorini is a stunning Greek island in the Aegean Sea, famous for its white-washed buildings, blue-domed churches, and breathtaking sunsets over the caldera.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Best Time to Visit</h3>
+                <p class="text-gray-700">April to October</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Language</h3>
+                <p class="text-gray-700">Greek</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Currency</h3>
+                <p class="text-gray-700">Euro (EUR)</p>
+            </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Top Attractions</h3>
+        <ul class="list-disc pl-5 mb-6 text-gray-700">
+            <li>Oia Village</li>
+            <li>Fira Town</li>
+            <li>Red Beach</li>
+            <li>Akrotiri Archaeological Site</li>
+            <li>Caldera Views</li>
+        </ul>
+        <div class="flex justify-end">
+            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+        </div>
+    </div>
+</x-modal>
+
+<!-- Kyoto -->
+<x-modal name="destination-kyoto" :show="false" maxWidth="2xl">
+    <div class="p-6">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-3xl font-bold text-gray-900">Kyoto, Japan</h2>
+            <button x-on:click="$dispatch('close-modal', 'destination-kyoto')" class="text-gray-500 hover:text-gray-700">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div id="kyoto-weather" class="mb-4 p-3 bg-blue-50 rounded-lg">
+            <p class="text-sm text-gray-600">Loading weather data...</p>
+        </div>
+        <div class="mb-6">
+            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Kyoto" class="w-full h-64 object-cover rounded-lg">
+        </div>
+        <p class="text-gray-700 mb-6">Kyoto, once the capital of Japan, is known for its classical Buddhist temples, gardens, imperial palaces, Shinto shrines, and traditional wooden houses.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Best Time to Visit</h3>
+                <p class="text-gray-700">March to May, October to November</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Language</h3>
+                <p class="text-gray-700">Japanese</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Currency</h3>
+                <p class="text-gray-700">Japanese Yen (JPY)</p>
+            </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Top Attractions</h3>
+        <ul class="list-disc pl-5 mb-6 text-gray-700">
+            <li>Fushimi Inari Shrine</li>
+            <li>Kinkaku-ji (Golden Pavilion)</li>
+            <li>Arashiyama Bamboo Grove</li>
+            <li>Kiyomizu-dera Temple</li>
+            <li>Gion District</li>
+        </ul>
+        <div class="flex justify-end">
+            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+        </div>
+    </div>
+</x-modal>
+
+<!-- Machu Picchu -->
+<x-modal name="destination-machu-picchu" :show="false" maxWidth="2xl">
+    <div class="p-6">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-3xl font-bold text-gray-900">Machu Picchu, Peru</h2>
+            <button x-on:click="$dispatch('close-modal', 'destination-machu-picchu')" class="text-gray-500 hover:text-gray-700">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div id="machu-picchu-weather" class="mb-4 p-3 bg-blue-50 rounded-lg">
+            <p class="text-sm text-gray-600">Loading weather data...</p>
+        </div>
+        <div class="mb-6">
+            <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Machu Picchu" class="w-full h-64 object-cover rounded-lg">
+        </div>
+        <p class="text-gray-700 mb-6">Machu Picchu is an ancient Incan citadel set high in the Andes Mountains in Peru, renowned for its sophisticated dry-stone walls and panoramic views.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Best Time to Visit</h3>
+                <p class="text-gray-700">April to October</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Language</h3>
+                <p class="text-gray-700">Spanish, Quechua</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Currency</h3>
+                <p class="text-gray-700">Peruvian Sol (PEN)</p>
+            </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Top Attractions</h3>
+        <ul class="list-disc pl-5 mb-6 text-gray-700">
+            <li>Sun Gate (Inti Punku)</li>
+            <li>Temple of the Sun</li>
+            <li>Inca Bridge</li>
+            <li>Huayna Picchu</li>
+            <li>Temple of the Three Windows</li>
+        </ul>
+        <div class="flex justify-end">
+            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+        </div>
+    </div>
+</x-modal>
+
+<!-- Iceland -->
+<x-modal name="destination-iceland" :show="false" maxWidth="2xl">
+    <div class="p-6">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-3xl font-bold text-gray-900">Iceland</h2>
+            <button x-on:click="$dispatch('close-modal', 'destination-iceland')" class="text-gray-500 hover:text-gray-700">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div id="iceland-weather" class="mb-4 p-3 bg-blue-50 rounded-lg">
+            <p class="text-sm text-gray-600">Loading weather data...</p>
+        </div>
+        <div class="mb-6">
+            <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Iceland" class="w-full h-64 object-cover rounded-lg">
+        </div>
+        <p class="text-gray-700 mb-6">Iceland is a Nordic island nation defined by dramatic landscapes with volcanoes, geysers, hot springs, and lava fields, and is famous for the Northern Lights.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Best Time to Visit</h3>
+                <p class="text-gray-700">June to August (Summer), February to March & September to October (Northern Lights)</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Language</h3>
+                <p class="text-gray-700">Icelandic</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Currency</h3>
+                <p class="text-gray-700">Icelandic Krona (ISK)</p>
+            </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Top Attractions</h3>
+        <ul class="list-disc pl-5 mb-6 text-gray-700">
+            <li>Blue Lagoon</li>
+            <li>Golden Circle</li>
+            <li>Reykjavik</li>
+            <li>Jökulsárlón Glacier Lagoon</li>
+            <li>Seljalandsfoss Waterfall</li>
+        </ul>
+        <div class="flex justify-end">
+            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+        </div>
+    </div>
+</x-modal>
+
+<!-- Maldives -->
+<x-modal name="destination-maldives" :show="false" maxWidth="2xl">
+    <div class="p-6">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-3xl font-bold text-gray-900">Maldives</h2>
+            <button x-on:click="$dispatch('close-modal', 'destination-maldives')" class="text-gray-500 hover:text-gray-700">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div id="maldives-weather" class="mb-4 p-3 bg-blue-50 rounded-lg">
+            <p class="text-sm text-gray-600">Loading weather data...</p>
+        </div>
+        <div class="mb-6">
+            <img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Maldives" class="w-full h-64 object-cover rounded-lg">
+        </div>
+        <p class="text-gray-700 mb-6">The Maldives is a tropical paradise in the Indian Ocean, known for its crystal-clear waters, white-sand beaches, and luxurious overwater bungalows.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Best Time to Visit</h3>
+                <p class="text-gray-700">November to April</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Language</h3>
+                <p class="text-gray-700">Dhivehi</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Currency</h3>
+                <p class="text-gray-700">Maldivian Rufiyaa (MVR)</p>
+            </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Top Attractions</h3>
+        <ul class="list-disc pl-5 mb-6 text-gray-700">
+            <li>Male City</li>
+            <li>Maafushi Island</li>
+            <li>Banana Reef</li>
+            <li>Sun Island</li>
+            <li>Veligandu Island Beach</li>
+        </ul>
+        <div class="flex justify-end">
+            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+        </div>
+    </div>
+</x-modal>
+
+<!-- Germany -->
+<x-modal name="destination-germany" :show="false" maxWidth="2xl">
+    <div class="p-6">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-3xl font-bold text-gray-900">Germany</h2>
+            <button x-on:click="$dispatch('close-modal', 'destination-germany')" class="text-gray-500 hover:text-gray-700">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div id="germany-weather" class="mb-4 p-3 bg-blue-50 rounded-lg">
+            <p class="text-sm text-gray-600">Loading weather data...</p>
+        </div>
+        <div class="mb-6">
+            <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Germany" class="w-full h-64 object-cover rounded-lg">
+        </div>
+        <p class="text-gray-700 mb-6">Germany is a country in Central Europe known for its rich history, fairy-tale castles, vibrant cities, and scenic landscapes from the Black Forest to the Bavarian Alps.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Best Time to Visit</h3>
+                <p class="text-gray-700">May to September</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Language</h3>
+                <p class="text-gray-700">German</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Currency</h3>
+                <p class="text-gray-700">Euro (EUR)</p>
+            </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Top Attractions</h3>
+        <ul class="list-disc pl-5 mb-6 text-gray-700">
+            <li>Brandenburg Gate</li>
+            <li>Neuschwanstein Castle</li>
+            <li>Berlin Wall</li>
+            <li>Black Forest</li>
+            <li>Cologne Cathedral</li>
+        </ul>
+        <div class="flex justify-end">
+            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+        </div>
+    </div>
+</x-modal>
+
+<!-- Paris -->
+<x-modal name="destination-paris" :show="false" maxWidth="2xl">
+    <div class="p-6">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-3xl font-bold text-gray-900">Paris, France</h2>
+            <button x-on:click="$dispatch('close-modal', 'destination-paris')" class="text-gray-500 hover:text-gray-700">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div id="paris-weather" class="mb-4 p-3 bg-blue-50 rounded-lg">
+            <p class="text-sm text-gray-600">Loading weather data...</p>
+        </div>
+        <div class="mb-6">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?&auto=format&fit=crop&w=1770&q=80" alt="Paris" class="w-full h-64 object-cover rounded-lg">
+        </div>
+        <p class="text-gray-700 mb-6">Paris, the capital of France, is famed for its art, fashion, gastronomy, and culture. Its 19th-century cityscape is crisscrossed by wide boulevards and the River Seine.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Best Time to Visit</h3>
+                <p class="text-gray-700">April to June, September to November</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Language</h3>
+                <p class="text-gray-700">French</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Currency</h3>
+                <p class="text-gray-700">Euro (EUR)</p>
+            </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Top Attractions</h3>
+        <ul class="list-disc pl-5 mb-6 text-gray-700">
+            <li>Eiffel Tower</li>
+            <li>Louvre Museum</li>
+            <li>Notre-Dame Cathedral</li>
+            <li>Montmartre</li>
+            <li>Champs-Élysées</li>
+        </ul>
+        <div class="flex justify-end">
+            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+        </div>
+    </div>
+</x-modal>
+
+<!-- India -->
+<x-modal name="destination-india" :show="false" maxWidth="2xl">
+    <div class="p-6">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-3xl font-bold text-gray-900">India</h2>
+            <button x-on:click="$dispatch('close-modal', 'destination-india')" class="text-gray-500 hover:text-gray-700">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div id="india-weather" class="mb-4 p-3 bg-blue-50 rounded-lg">
+            <p class="text-sm text-gray-600">Loading weather data...</p>
+        </div>
+        <div class="mb-6">
+            <img src="https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?&auto=format&fit=crop&w=1770&q=80" alt="India" class="w-full h-64 object-cover rounded-lg">
+        </div>
+        <p class="text-gray-700 mb-6">India is a vast and diverse country in South Asia, celebrated for its rich culture, history, cuisine, and landmarks like the Taj Mahal, palaces, temples, and natural wonders.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Best Time to Visit</h3>
+                <p class="text-gray-700">October to March</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Language</h3>
+                <p class="text-gray-700">Hindi, English, and 20+ regional languages</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-lg">
+                <h3 class="font-semibold text-amber-800 mb-2">Currency</h3>
+                <p class="text-gray-700">Indian Rupee (INR)</p>
+            </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Top Attractions</h3>
+        <ul class="list-disc pl-5 mb-6 text-gray-700">
+            <li>Taj Mahal</li>
+            <li>Jaipur (Pink City)</li>
+            <li>Kerala Backwaters</li>
+            <li>Varanasi Ghats</li>
+            <li>Goa Beaches</li>
+        </ul>
+        <div class="flex justify-end">
+            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+        </div>
+    </div>
+</x-modal>
+
+
     <!-- JavaScript for Map -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {

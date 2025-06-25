@@ -9,6 +9,25 @@
     <link href="https://fonts.bunny.net/css?family=montserrat:400,500,600,700&display=swap" rel="stylesheet" />
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+#map {
+    z-index: 1 !important;
+}
+
+/* Also target Leaflet's internal elements */
+.leaflet-container {
+    z-index: 1 !important;
+}
+
+.leaflet-pane {
+    z-index: 1 !important;
+}
+
+.leaflet-map-pane {
+    z-index: 1 !important;
+}
+</style>
+
 </head>
 <body class="antialiased">
     <!-- Fixed Navigation Bar -->
@@ -222,7 +241,7 @@
                         <span class="inline-block text-amber-600 font-medium hover:text-amber-500">Explore Kyoto →</span>
                     </div>
                     <div class="absolute bottom-4 right-4">
-                        <a href="{{ route('trips.create', ['destination' => 'Bali, Indonesia']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                        <a href="{{ route('trips.create', ['destination' => 'kyoto, Japan']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
                             Plan Trip
                         </a>
                     </div>
@@ -243,7 +262,7 @@
                         <span class="inline-block text-amber-600 font-medium hover:text-amber-500">Explore Machu Picchu →</span>
                     </div>
                     <div class="absolute bottom-4 right-4">
-                        <a href="{{ route('trips.create', ['destination' => 'Bali, Indonesia']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                        <a href="{{ route('trips.create', ['destination' => 'Machu Picchu, Peru']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
                             Plan Trip
                         </a>
                     </div>
@@ -264,7 +283,7 @@
                         <span class="inline-block text-amber-600 font-medium hover:text-amber-500">Explore Iceland →</span>
                     </div>
                     <div class="absolute bottom-4 right-4">
-                        <a href="{{ route('trips.create', ['destination' => 'Bali, Indonesia']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                        <a href="{{ route('trips.create', ['destination' => 'Iceland, Europe']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
                             Plan Trip
                         </a>
                     </div>
@@ -285,7 +304,7 @@
                         <span class="inline-block text-amber-600 font-medium hover:text-amber-500">Explore Maldives →</span>
                     </div>
                     <div class="absolute bottom-4 right-4">
-                        <a href="{{ route('trips.create', ['destination' => 'Bali, Indonesia']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                        <a href="{{ route('trips.create', ['destination' => 'Maldives', 'South Asia']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
                             Plan Trip
                         </a>
                     </div>
@@ -313,7 +332,7 @@
                 </div>
 
                 <!-- paris -->
-                 <div class="destination-card group rounded-xl overflow-hidden shadow-lg bg-white transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl cursor-pointer" x-data="{}" x-on:click="$dispatch('open-modal', 'destination-germany')" data-destination="destination-germany">
+                 <div class="destination-card group rounded-xl overflow-hidden shadow-lg bg-white transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl cursor-pointer" x-data="{}" x-on:click="$dispatch('open-modal', 'destination-paris')" data-destination="destination-paris">
                     <div class="h-64 w-full relative overflow-hidden">
                         <img class="h-full w-full object-cover transition duration-700 ease-in-out group-hover:scale-110" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?&auto=format&fit=crop&w=1770&q=80" alt="Paris">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-70 group-hover:opacity-90 transition duration-300"></div>
@@ -327,14 +346,14 @@
                         <span class="inline-block text-amber-600 font-medium hover:text-amber-500">Explore Germany →</span>
                     </div>
                     <div class="absolute bottom-4 right-4">
-                        <a href="{{ route('trips.create', ['destination' => 'Berlin, Germany']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                        <a href="{{ route('trips.create', ['destination' => 'Paris, Europe']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
                             Plan Trip
                         </a>
                     </div>
                 </div>
 
                 <!-- india -->
-                 <div class="destination-card group rounded-xl overflow-hidden shadow-lg bg-white transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl cursor-pointer" x-data="{}" x-on:click="$dispatch('open-modal', 'destination-germany')" data-destination="destination-germany">
+                 <div class="destination-card group rounded-xl overflow-hidden shadow-lg bg-white transform transition duration-500 hover:-translate-y-2 hover:shadow-2xl cursor-pointer" x-data="{}" x-on:click="$dispatch('open-modal', 'destination-india')" data-destination="destination-india">
                     <div class="h-64 w-full relative overflow-hidden">
                         <img class="h-full w-full object-cover transition duration-700 ease-in-out group-hover:scale-110" src="https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?&auto=format&fit=crop&w=1770&q=80" alt="India">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-70 group-hover:opacity-90 transition duration-300"></div>
@@ -348,7 +367,7 @@
                         <span class="inline-block text-amber-600 font-medium hover:text-amber-500">Explore Germany →</span>
                     </div>
                     <div class="absolute bottom-4 right-4">
-                        <a href="{{ route('trips.create', ['destination' => 'Berlin, Germany']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                        <a href="{{ route('trips.create', ['destination' => 'Delhi, India']) }}" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
                             Plan Trip
                         </a>
                     </div>
@@ -497,7 +516,12 @@
             </ul>
             
             <div class="flex justify-end">
-                <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+                <a href="{{ route('trips.create', ['destination' => 'Bali, Indonesia']) }}" class="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                Plan Your Trip
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
             </div>
         </div>
     </x-modal>
@@ -543,7 +567,12 @@
             <li>Caldera Views</li>
         </ul>
         <div class="flex justify-end">
-            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+            <a href="{{ route('trips.create', ['destination' => 'Santorini, Greece']) }}" class="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                Plan Your Trip
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
         </div>
     </div>
 </x-modal>
@@ -589,7 +618,12 @@
             <li>Gion District</li>
         </ul>
         <div class="flex justify-end">
-            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+             <a href="{{ route('trips.create', ['destination' => 'Kyoto, Japan']) }}" class="inline-flex items-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition-colors">
+                Plan Your Trip
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
         </div>
     </div>
 </x-modal>
@@ -634,8 +668,13 @@
             <li>Huayna Picchu</li>
             <li>Temple of the Three Windows</li>
         </ul>
-        <div class="flex justify-end">
-            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+       <div class="flex justify-end">
+            <a href="{{ route('trips.create', ['destination' => 'Machu Picchu, Peru']) }}" class="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                Plan Your Trip
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
         </div>
     </div>
 </x-modal>
@@ -681,7 +720,12 @@
             <li>Seljalandsfoss Waterfall</li>
         </ul>
         <div class="flex justify-end">
-            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+            <a href="{{ route('trips.create', ['destination' => 'Iceland, Europe']) }}" class="inline-flex items-center px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-colors">
+                Plan Your Trip
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
         </div>
     </div>
 </x-modal>
@@ -726,8 +770,13 @@
             <li>Sun Island</li>
             <li>Veligandu Island Beach</li>
         </ul>
-        <div class="flex justify-end">
-            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+         <div class="flex justify-end">
+             <a href="{{ route('trips.create', ['destination' => 'Maldives', 'Maldives']) }}" class="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                Plan Your Trip
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
         </div>
     </div>
 </x-modal>
@@ -772,8 +821,13 @@
             <li>Black Forest</li>
             <li>Cologne Cathedral</li>
         </ul>
-        <div class="flex justify-end">
-            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+         <div class="flex justify-end">
+             <a href="{{ route('trips.create', ['destination' => 'Germany, Europe']) }}" class="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                Plan Your Trip
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
         </div>
     </div>
 </x-modal>
@@ -819,7 +873,12 @@
             <li>Champs-Élysées</li>
         </ul>
         <div class="flex justify-end">
-            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+                 <a href="{{ route('trips.create', ['destination' => 'Paris, Europe']) }}" class="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                Plan Your Trip
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
         </div>
     </div>
 </x-modal>
@@ -865,7 +924,12 @@
             <li>Goa Beaches</li>
         </ul>
         <div class="flex justify-end">
-            <a href="#" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-colors">Plan Your Trip</a>
+ <a href="{{ route('trips.create', ['destination' => 'Delhi, India']) }}" class="inline-flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors">
+                Plan Your Trip
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
         </div>
     </div>
 </x-modal>
@@ -961,13 +1025,25 @@
             window.addEventListener('open-modal', function(event) {
                 const modalName = event.detail;
                 
-                if (modalName === 'destination-bali') {
-                    fetchWeather('Denpasar,ID', 'bali-weather');
-                } else if (modalName === 'destination-santorini') {
-                    fetchWeather('Santorini,GR', 'santorini-weather');
-                } else if (modalName === 'destination-kyoto') {
-                    fetchWeather('Kyoto,JP', 'kyoto-weather');
-                }
+                  if (modalName === 'destination-bali') {
+        fetchWeather('Denpasar,ID', 'bali-weather');
+    } else if (modalName === 'destination-santorini') {
+        fetchWeather('Santorini,GR', 'santorini-weather');
+    } else if (modalName === 'destination-kyoto') {
+        fetchWeather('Kyoto,JP', 'kyoto-weather');
+    } else if (modalName === 'destination-machu-picchu') {
+        fetchWeather('Cusco,PE', 'machu-picchu-weather');
+    } else if (modalName === 'destination-iceland') {
+        fetchWeather('Reykjavik,IS', 'iceland-weather');
+    } else if (modalName === 'destination-maldives') {
+        fetchWeather('Male,MV', 'maldives-weather');
+    } else if (modalName === 'destination-germany') {
+        fetchWeather('Berlin,DE', 'germany-weather');
+    } else if (modalName === 'destination-paris') {
+        fetchWeather('Paris,FR', 'paris-weather');
+    } else if (modalName === 'destination-india') {
+        fetchWeather('Delhi,IN', 'india-weather');
+    }
             });
         });
     </script>

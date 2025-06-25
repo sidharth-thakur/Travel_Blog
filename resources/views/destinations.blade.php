@@ -388,24 +388,31 @@
     </div>
     
     <!-- Newsletter Section -->
-    <div class="py-16 bg-amber-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h2 class="text-2xl font-bold text-white uppercase tracking-wider">JOIN OUR NEWSLETTER</h2>
-                <p class="mt-2 text-lg text-white/80">Get travel tips and exclusive destination guides delivered to your inbox</p>
-                
-                <form class="mt-8 sm:flex sm:max-w-md sm:mx-auto">
-                    <label for="email-address" class="sr-only">Email address</label>
-                    <input id="email-address" name="email" type="email" autocomplete="email" required class="w-full px-5 py-3 placeholder-gray-500 focus:ring-2 focus:ring-amber-600 focus:border-transparent rounded-l-lg" placeholder="Enter your email">
-                    <div class="mt-3 sm:mt-0 sm:ml-3">
-                        <button type="submit" class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-r-lg text-white bg-amber-700 hover:bg-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-600">
-                            Subscribe
-                        </button>
-                    </div>
-                </form>
+   <!-- Newsletter Section -->
+<div class="py-16 bg-amber-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h2 class="text-2xl font-bold text-white uppercase tracking-wider">JOIN OUR NEWSLETTER</h2>
+            <p class="mt-2 text-lg text-white/80">Get travel tips and exclusive destination guides delivered to your inbox</p>
+            
+            <form id="newsletter-form" class="mt-8 sm:flex sm:max-w-md sm:mx-auto">
+                <label for="email-address" class="sr-only">Email address</label>
+                <input id="email-address" name="email" type="email" autocomplete="email" required class="w-full px-5 py-3 placeholder-gray-500 focus:ring-2 focus:ring-amber-600 focus:border-transparent rounded-l-lg" placeholder="Enter your email">
+                <div class="mt-3 sm:mt-0 sm:ml-3">
+                    <button type="submit" class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-r-lg text-white bg-amber-700 hover:bg-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-600">
+                        Subscribe
+                    </button>
+                </div>
+            </form>
+            
+            <!-- Message Display Area -->
+            <div id="newsletter-message" class="mt-4 hidden">
+                <p class="text-white font-semibold"></p>
             </div>
         </div>
     </div>
+</div>
+
     
     <!-- Footer -->
     <footer class="bg-gray-900 text-white">
@@ -937,6 +944,51 @@
 
     <!-- JavaScript for Map -->
     <script>
+        // Enhanced version with better styling
+const newsletterForm = document.getElementById('newsletter-form');
+const newsletterMessage = document.getElementById('newsletter-message');
+
+if (newsletterForm && newsletterMessage) {
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const emailInput = document.getElementById('email-address');
+        const email = emailInput.value.trim();
+        const submitButton = newsletterForm.querySelector('button[type="submit"]');
+        
+        if (email) {
+            // Temporarily disable button and show loading
+            submitButton.textContent = 'Subscribing...';
+            submitButton.disabled = true;
+            
+            // Simulate API call delay
+            setTimeout(function() {
+                // Show success message
+                newsletterMessage.querySelector('p').innerHTML = '🎉 <strong>Successfully Subscribed!</strong><br>Thank you for joining our newsletter!';
+                newsletterMessage.classList.remove('hidden');
+                
+                // Clear input and reset button
+                emailInput.value = '';
+                submitButton.textContent = 'Subscribe';
+                submitButton.disabled = false;
+                
+                // Hide message after 4 seconds
+                setTimeout(function() {
+                    newsletterMessage.classList.add('hidden');
+                }, 4000);
+            }, 1000);
+        } else {
+            // Show error message
+            newsletterMessage.querySelector('p').innerHTML = '❌ <strong>Please enter a valid email address</strong>';
+            newsletterMessage.classList.remove('hidden');
+            
+            setTimeout(function() {
+                newsletterMessage.classList.add('hidden');
+            }, 3000);
+        }
+    });
+}
+
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize Leaflet map
             const map = L.map('map').setView([20, 0], 2);

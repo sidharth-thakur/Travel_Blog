@@ -22,7 +22,7 @@ class AdminAccess
         }
         
         // Check if user has the specific admin email
-        if (Auth::user()->email !== 'sidharththakur@gmail.com') {
+        if (Auth::user()->email !== 'yamansharmarakta123@gmail.com') {
             return redirect()->route('dashboard')->with('error', 'You do not have permission to access the admin area. Admin access is restricted to sidharththakur@gmail.com');
         }
         
